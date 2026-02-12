@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ff6b9d, #ff2e63, #ff8fab, #ff4d6d);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Images */
+.floating {
+    position: absolute;
+    border-radius: 15px;
+    animation: float 12s linear infinite;
+    opacity: 0.85;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-20vh) rotate(360deg); }
+}
+
+/* Glass Card */
+.container {
+    width: 92%;
+    max-width: 390px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 30px 20px 40px 20px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+/* Header Image */
+.header-img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Fancy Title */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    min-height: 70px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    padding: 14px 26px;
+    border-radius: 30px;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.yes {
+    background: white;
+    color: #ff2e63;
+    box-shadow: 0 8px 20px rgba(255,255,255,0.4);
+}
+
+.no {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.yes:hover {
+    transform: scale(1.15);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.6);
+}
+
+.no:hover {
+    transform: scale(0.85);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Images -->
+<script>
+const images = [
+"babu1.jpg","babu2.jpg","babu3.jpg","babu4.jpg","babu5.jpg",
+"babu6.jpg","babu7.jpg","babu8.jpg","babu9.jpg","babu10.jpg"
+];
+
+for(let i = 0; i < 10; i++){
+    const img = document.createElement("img");
+    img.src = images[Math.floor(Math.random() * images.length)];
+    img.className = "floating";
+    img.style.left = Math.random() * 100 + "vw";
+    img.style.width = (60 + Math.random() * 40) + "px";
+    img.style.animationDuration = (8 + Math.random() * 6) + "s";
+    document.body.appendChild(img);
+}
+</script>
+
+<div class="container">
+    <img src="babuheader.jpg" class="header-img" alt="Header">
+
+    <h1 id="typing"></h1>
+
+    <div class="buttons">
+        <button class="yes" onclick="alert('You just made me the happiest person alive 😭❤️')">Yes 💖</button>
+        <button class="no" onclick="alert('Hehe… try again fine lady 😌')">No</button>
+    </div>
+</div>
+
+<script>
+const text = "Fine Lady, will you be my Valentine?";
+let i = 0;
+const speed = 60;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+window.onload = typeWriter;
+</script>
+
+</body>
+</html>
